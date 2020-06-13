@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.gnawTravle.com.travel.mapper.IAdminMapper">
+    <select id="login" resultType="www.gnawTravle.com.travel.entity.admin.Admin">
+        SELECT * FROM t_admin_user
+        WHERE USER_NAME = #{username}
+        AND PASSWORD = #{password}
+        AND DELETE_STATUS = 0;
+    </select>
+</mapper>

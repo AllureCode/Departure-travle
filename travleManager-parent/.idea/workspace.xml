@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a849a5aa-2a42-4abd-a97e-49b90cba9a6d" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Java开发系列\Maven相关包\zip\apache-maven-3.6.1-bin\apache-maven-3.6.1\Resources" />
+        <option name="mavenHome" value="D:/Java开发系列/Maven相关包/zip/apache-maven-3.6.1-bin/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="D:\Java开发系列\Maven相关包\zip\apache-maven-3.6.1-bin\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1d4er4wH2H6ZlFVe1UY4FcKCtKs" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/travelManager-tm-web/src/main/resources/static" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\SSM_Case\Travel\travleManagerparent\travleManager-parent\travelManager-tm-web\src\main\resources\static" />
+      <recent name="E:\SSM_Case\Travel\travleManagerparent\travleManager-parent\travelManager-tm-web\src\main\resources\static\images" />
+      <recent name="E:\SSM_Case\Travel\travleManagerparent\travleManager-parent\travelManager-tm-web\src\main\resources\templates" />
+      <recent name="E:\SSM_Case\Travel\travleManagerparent\travleManager-parent\travelManager-tm-web\src\main\resources\static\js" />
+      <recent name="E:\SSM_Case\Travel\travleManagerparent\travleManager-parent\travelManager-tm-web\src\main\resources\static\css" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="www.gnawTravle.com.travel.config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\SSM_Case\Travel\travleManagerparent\travleManager-parent\travelManager-tm-web\src\main\resources" />
+    </key>
+  </component>
+  <component name="RestServicesNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringApplicationRun">
+    <configuration name="AppTest.shouldAnswerWithTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="travelManager-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="www.gnawTravle.com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="www.gnawTravle.com" />
+      <option name="MAIN_CLASS_NAME" value="www.gnawTravle.com.AppTest" />
+      <option name="METHOD_NAME" value="shouldAnswerWithTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringApplicationRun" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="travelManager-tm-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="www.gnawTravle.com.travel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="www.gnawTravle.com.travel.SpringApplicationRun" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SpringApplicationRun" />
+        <item itemvalue="JUnit.AppTest.shouldAnswerWithTrue" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\wang_sir\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a849a5aa-2a42-4abd-a97e-49b90cba9a6d" name="Default Changelist" comment="" />
+      <created>1591688987559</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591688987559</updated>
+      <workItem from="1591688991317" duration="2145000" />
+      <workItem from="1591691145531" duration="1271000" />
+      <workItem from="1591750761614" duration="2750000" />
+      <workItem from="1591753546125" duration="1251000" />
+      <workItem from="1591768803985" duration="1846000" />
+      <workItem from="1591773747409" duration="3980000" />
+      <workItem from="1591783012569" duration="2382000" />
+      <workItem from="1591785438529" duration="2743000" />
+      <workItem from="1591875623289" duration="3990000" />
+      <workItem from="1591881403170" duration="2675000" />
+      <workItem from="1591963830541" duration="4338000" />
+      <workItem from="1592009093972" duration="16124000" />
+      <workItem from="1592028934273" duration="1564000" />
+      <workItem from="1592030503701" duration="1912000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.gnawTravle.com.travel.mapper.IUserMapper">
+    <select id="countPorvice" resultType="www.gnawTravle.com.travel.entity.user.Province">
+        SELECT p.`id` PROVICE,COUNT(u.`PROVINCE`)
+         COUNT FROM t_province p
+         LEFT JOIN t_user u ON u.`PROVINCE` = p.`id`
+          GROUP BY p.id ;
+    </select>
+</mapper>

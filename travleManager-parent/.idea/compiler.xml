@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="travelManager-common" />
+        <module name="travelManager-bean" />
+        <module name="travelManager-tm-impl" />
+        <module name="travelManager-tm-web" />
+        <module name="travelManager-tm-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="travelManager-api" target="1.8" />
+      <module name="travelManager-impl" target="1.8" />
+      <module name="travelManager-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="travelManager-bean" options="" />
+      <module name="travelManager-common" options="" />
+      <module name="travelManager-tm-api" options="" />
+      <module name="travelManager-tm-impl" options="" />
+      <module name="travelManager-tm-web" options="" />
+    </option>
+  </component>
+</project>
