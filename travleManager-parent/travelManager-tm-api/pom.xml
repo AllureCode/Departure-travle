@@ -35,6 +35,11 @@
           <version>1.0-SNAPSHOT</version>
           <scope>compile</scope>
       </dependency>
+    <dependency>
+      <groupId>www.gnawTravle.com</groupId>
+      <artifactId>travelManager-common</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>
