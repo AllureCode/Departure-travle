@@ -10,7 +10,7 @@ var navs = [{
 	"spread" : false,
 	"children" : [
 		{
-			"title" : "注册用户",
+			"title" : "普通用户",
 			"icon" : "&#xe612;",
 			"href" : "/manager/userList",
 			"spread" : false

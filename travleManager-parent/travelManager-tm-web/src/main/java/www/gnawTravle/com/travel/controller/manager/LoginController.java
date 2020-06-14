@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import www.gnawTravle.com.travel.entity.admin.Admin;
 import www.gnawTravle.com.travel.service.IAdminService;
@@ -26,12 +27,11 @@ public class LoginController {
     @Autowired
     private IAdminService adminService;
 
-    @PostMapping("/login")
-    public String login(@RequestParam("username") String username,
-                        @RequestParam("password") String password,
+    @RequestMapping("/login")
+    public String login(@RequestParam(value = "username",required = false) String username,
+                        @RequestParam(value = "password",required = false) String password,
                         HttpSession session, Model model) {
         if (Tools.isEmpty(username) || Tools.isEmpty(password)) {
-            model.addAttribute("msg", ConstantTool.USERNAME_PASSWORD_IS_NULL);
             return "login";
         }
         try {

@@ -1,10 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="www.gnawTravle.com.travel.mapper.IUserMapper">
+    <insert id="save">
+    INSERT INTO t_user(ADD_TIME,USER_NAME,PASSWORD,LINK_TEL,NAME,IC_CODE,STATE,PROVINCE)
+     VALUES(NOW(),#{userName},#{password},#{linkTel},#{name},#{icCode},#{state},#{province})
+    </insert>
+
+    <update id="update">
+        UPDATE t_user SET
+        MODIFY_TIME=NOW(),
+        USER_NAME=#{userName},
+        PASSWORD=#{password},
+        LINK_TEL=#{linkTel},
+        NAME=#{name},
+        IC_CODE=#{icCode},
+        STATE=#{state},
+        PROVINCE=#{province}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByid">
+        delete from t_user where id=#{id}
+    </delete>
+
     <select id="countPorvice" resultType="www.gnawTravle.com.travel.entity.user.Province">
         SELECT p.`id` PROVICE,COUNT(u.`PROVINCE`)
          COUNT FROM t_province p
          LEFT JOIN t_user u ON u.`PROVINCE` = p.`id`
           GROUP BY p.id ;
     </select>
+
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_user WHERE DELETE_STATUS=0
+    </select>
+
+    <select id="findList" resultType="www.gnawTravle.com.travel.entity.user.User">
+    SELECT * FROM t_user WHERE DELETE_STATUS=0 ORDER BY ADD_TIME DESC
+    </select>
+
+    <select id="findListByQuery" resultType="www.gnawTravle.com.travel.entity.user.User">
+    SELECT * FROM t_user
+    WHERE DELETE_STATUS=0
+    AND USER_NAME LIKE #{query,jdbcType=VARCHAR}
+    ORDER BY ADD_TIME DESC
+    </select>
+
+    <select id="findById" resultType="www.gnawTravle.com.travel.entity.user.User">
+    SELECT * FROM t_user WHERE ID = #{id} AND DELETE_STATUS=0
+    </select>
+
+    <select id="findByUserName" resultType="www.gnawTravle.com.travel.entity.user.User">
+    SELECT * FROM t_user WHERE USER_NAME = #{userName} AND DELETE_STATUS=0
+    </select>
+
 </mapper>
