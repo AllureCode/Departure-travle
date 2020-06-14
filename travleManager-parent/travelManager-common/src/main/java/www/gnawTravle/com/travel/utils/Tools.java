@@ -1,5 +1,7 @@
 package www.gnawTravle.com.travel.utils;
 
+import java.util.UUID;
+
 /**
  * @program: travleManager-parent
  * @description: 工具类
@@ -19,4 +21,5 @@ public class Tools {
     public static boolean isEmpty(Object s){
         return s==null || " ".equals(s) || "null".equals(s);
     }
+
 }
