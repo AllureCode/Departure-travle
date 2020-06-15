@@ -9,4 +9,5 @@ package www.gnawTravle.com.travel.utils;
 public class ConstantTool {
     public static final String LOGIN_USERNAME_NOT_EXIST = "当前用户不存在";
     public static final Object ACCOUNT_DISABLE = "当前账户被停用" ;
+    public static final Object USER_EXIST = "用户已存在" ;
 }
