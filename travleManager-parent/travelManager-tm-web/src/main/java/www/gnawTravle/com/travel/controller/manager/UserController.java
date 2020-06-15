@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import www.gnawTravle.com.travel.entity.page.PageParam;
 import www.gnawTravle.com.travel.entity.user.User;
 import www.gnawTravle.com.travel.service.IUserService;
+import www.gnawTravle.com.travel.utils.ConstantTool;
 import www.gnawTravle.com.travel.utils.Tools;
 import java.util.List;
 
@@ -94,7 +95,7 @@ public class UserController {
                 if (Tools.isEmpty(entity.getId())) {
                     User object = userService.findByUserName(entity.getUserName());
                     if (object != null) {
-                        mv.addObject("message", "用户名已存在!");
+                        mv.addObject("message", ConstantTool.USER_EXIST);
                         mv.addObject("entity", entity);
                         mv.setViewName("user/userEdit");
                         return mv;
