@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.gnawTravle.com.travel.mapper.ITravelRouteMapper">
+    <insert id="save">
+        INSERT INTO t_route(ADD_TIME,TITLE,START_SITE,END_SITE,END_TIME,
+                START_TIME,DAY,PRODUCT_CODE,PRICE,STATE,IMG_URL,INTRO)
+                 VALUES(NOW(),#{title},#{startSite},
+                #{endSite},#{endTime},#{startTime},
+                #{day},#{productCode},#{price},#{state},#{imgUrl},#{intro})
+    </insert>
+
+    <update id="update">
+        UPDATE t_route
+        SET MODIFY_TIME=NOW(),
+        TITLE=#{title},
+        START_SITE=#{startSite},
+        END_SITE=#{endSite},
+        END_TIME=#{endTime},START_TIME=#{startTime},DAY=#{day},
+        PRODUCT_CODE=#{productCode},PRICE=#{price},STATE=#{state},
+        IMG_URL=#{imgUrl},INTRO=#{intro}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByid">
+        UPDATE t_route SET DELETE_STATUS=1 WHERE id=#{id}
+    </delete>
+
+    <select id="findById" resultType="www.gnawTravle.com.travel.entity.travelroute.TravelRoute">
+        SELECT * FROM t_route WHERE ID = #{id} AND DELETE_STATUS=0
+    </select>
+
+    <select id="findList" resultType="www.gnawTravle.com.travel.entity.travelroute.TravelRoute">
+        SELECT * FROM t_route WHERE DELETE_STATUS=0 ORDER BY ADD_TIME DESC
+    </select>
+
+    <select id="indexList" resultType="www.gnawTravle.com.travel.entity.travelroute.TravelRoute">
+        SELECT * FROM t_route WHERE DELETE_STATUS=0 AND STATE=1 ORDER BY ADD_TIME DESC
+    </select>
+
+    <select id="findListByQuery" resultType="www.gnawTravle.com.travel.entity.travelroute.TravelRoute">
+        SELECT * FROM t_route WHERE DELETE_STATUS=0
+        AND TITLE LIKE #{query,jdbcType=VARCHAR}
+        ORDER BY ADD_TIME DESC
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+    SELECT count(*) FROM t_route WHERE DELETE_STATUS=0
+    </select>
+
+    <select id="count2" resultType="java.lang.Long">
+    SELECT count(*) FROM t_route WHERE DELETE_STATUS=0 AND STATE=1
+    </select>
+
+    <select id="state0count" resultType="java.lang.Long">
+    SELECT count(*) FROM t_route WHERE DELETE_STATUS=0 AND STATE=0
+    </select>
+
+    <select id="state1count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_route WHERE DELETE_STATUS=0 AND STATE=1
+    </select>
+
+    <select id="state2count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_route WHERE DELETE_STATUS=0 AND STATE=2
+    </select>
+
+
+</mapper>
