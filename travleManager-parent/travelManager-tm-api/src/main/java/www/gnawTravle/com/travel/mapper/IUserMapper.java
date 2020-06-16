@@ -15,11 +15,11 @@ public interface IUserMapper {
     /**
      * 查询省份
      */
-    List<Province> countPorvice() throws Exception;
+    List<Province> countPorvice();
     /**
      * 查询总记录数
      */
-    long count() throws Exception;
+    long count();
 
 
     /**
