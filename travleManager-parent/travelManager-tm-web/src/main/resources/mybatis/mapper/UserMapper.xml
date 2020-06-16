@@ -20,7 +20,7 @@
     </update>
 
     <delete id="deleteByid">
-        delete from t_user where id=#{id}
+       UPDATE t_user SET DELETE_STATUS=1 WHERE id=#{id}
     </delete>
 
     <select id="countPorvice" resultType="www.gnawTravle.com.travel.entity.user.Province">

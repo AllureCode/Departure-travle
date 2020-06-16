@@ -7,4 +7,49 @@
         AND PASSWORD = #{password}
         AND DELETE_STATUS = 0;
     </select>
+
+    <insert id="save">
+     INSERT INTO t_admin_user(ADD_TIME,USER_NAME,PASSWORD,LINK_TEL,NAME,STATE)
+      VALUES (NOW(),#{userName},#{password},#{linkTel},#{name},#{state})
+    </insert>
+
+    <update id="update">
+       UPDATE t_admin_user SET
+       MODIFY_TIME=NOW(),
+       USER_NAME=#{userName},
+       PASSWORD=#{password},
+       LINK_TEL=#{linkTel},
+       NAME=#{name},
+       STATE=#{state}
+       WHERE id=#{id}
+    </update>
+
+    <delete id="deleteByid">
+    UPDATE t_admin_user SET DELETE_STATUS=1 WHERE id=#{id}
+    </delete>
+
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_admin_user WHERE DELETE_STATUS=0
+    </select>
+
+    <select id="findList" resultType="www.gnawTravle.com.travel.entity.admin.Admin">
+    SELECT * FROM t_admin_user WHERE DELETE_STATUS=0 ORDER BY ADD_TIME DESC
+    </select>
+
+    <select id="findListByQuery" resultType="www.gnawTravle.com.travel.entity.admin.Admin">
+    SELECT * FROM t_admin_user
+    WHERE DELETE_STATUS=0
+    AND USER_NAME LIKE #{query,jdbcType=VARCHAR}
+    ORDER BY ADD_TIME DESC
+    </select>
+
+    <select id="findById" resultType="www.gnawTravle.com.travel.entity.admin.Admin">
+    SELECT * FROM t_admin_user WHERE ID = #{id} AND DELETE_STATUS=0
+    </select>
+
+    <select id="findByUserName" resultType="www.gnawTravle.com.travel.entity.admin.Admin">
+    SELECT * FROM t_admin_user WHERE USER_NAME = #{userName} AND DELETE_STATUS=0
+    </select>
+
+
 </mapper>
