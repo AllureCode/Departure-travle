@@ -64,4 +64,5 @@ public interface IUserService {
      * @throws Exception
      */
     void deleteByid(Integer id)throws Exception;
+
 }
