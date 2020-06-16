@@ -18,7 +18,7 @@
 	<blockquote class="layui-elem-quote news_search">
 		<div class="layui-inline">
 		    <div class="layui-input-inline">
-		    	<input type="text" name="query" th:value="${query}" placeholder="请输入关键字" class="layui-input search_input"/>
+		    	<input type="text" name="query" th:value="${query}" placeholder="请输入用户名称查询" class="layui-input search_input"/>
 		    </div>
 		    <button class="layui-btn search_btn" type="submit">查询</button>
 		</div>
@@ -59,13 +59,13 @@
 				<td th:if="${var.state==1}">启用</td>
 				<td th:if="${var.state==''}"></td>
 				<td>
-					<a class="layui-btn layui-btn-xs" th:if="${var.id != 'b496894b89754a848e9b74ff66a05d44'}" th:href="@{/manager/adminView(id=${var.id})}">
+					<a class="layui-btn layui-btn-xs" th:href="@{/manager/adminView(id=${var.id})}">
 						<i class="layui-icon">&#xe60a;</i>
 					</a>
-					<a class="layui-btn layui-btn-xs layui-btn-normal" th:if="${var.id != 'b496894b89754a848e9b74ff66a05d44'}" th:href="@{/manager/adminEdit(id=${var.id})}">
+					<a class="layui-btn layui-btn-xs layui-btn-normal" th:href="@{/manager/adminEdit(id=${var.id})}">
 						<i class="layui-icon">&#xe642;</i>
 					</a>
-					<a class="layui-btn layui-btn-xs layui-btn-danger" th:if="${var.id != 'b496894b89754a848e9b74ff66a05d44'}" th:href="@{/manager/adminDelete(id=${var.id})}">
+					<a class="layui-btn layui-btn-xs layui-btn-danger"  th:href="@{/manager/adminDelete(id=${var.id})}">
 						<i class="layui-icon">&#xe640;</i>
 					</a>
 				</td>
