@@ -25,6 +25,11 @@ spring:
     password: username
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/travle?serverTimezone=GMT&characterEncoding=UTF-8&allowMultiQueries=true
+  #配置spring boot文件上传大小限制
+  http:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
 
 #开启mybatis下划线转驼峰设置
 mybatis:
