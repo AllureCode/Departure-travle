@@ -9,8 +9,6 @@ import www.gnawTravle.com.travel.entity.user.User;
 import www.gnawTravle.com.travel.mapper.IUserMapper;
 import www.gnawTravle.com.travel.service.IUserService;
 import www.gnawTravle.com.travel.utils.Tools;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
