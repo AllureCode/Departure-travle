@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.gnawTravle.com.travel.mapper.IHotelMapper">
+    <insert id="save">
+        INSERT INTO t_hotel(ADD_TIME,
+        HOTEL_NAME,HOTEL_INTRO,HOTEL_STAR,LINK_PHONE,ADDRESS,
+        STATE, IMG_URL,PRICE)
+        VALUES(NOW(),
+        #{hotelName},#{hotelIntro},#{hotelStar},
+        #{linkPhone},#{address},#{state},#{imgUrl},#{price})
+    </insert>
+    <update id="update">
+        UPDATE t_hotel SET MODIFY_TIME=NOW(),
+        HOTEL_NAME=#{hotelName},
+        HOTEL_INTRO=#{hotelIntro},
+        HOTEL_STAR=#{hotelStar},LINK_PHONE=#{linkPhone},
+        ADDRESS=#{address},STATE=#{state},IMG_URL=#{imgUrl},
+        PRICE=#{price} WHERE id=#{id}
+    </update>
+    <delete id="deleteByid">
+        UPDATE t_hotel SET DELETE_STATUS=1 WHERE id=#{id}
+    </delete>
+
+    <select id="findById" resultType="www.gnawTravle.com.travel.entity.hotel.Hotel">
+        SELECT * FROM t_hotel WHERE ID = #{id} AND DELETE_STATUS=0
+    </select>
+    <select id="findList" resultType="www.gnawTravle.com.travel.entity.hotel.Hotel">
+        SELECT * FROM t_hotel WHERE DELETE_STATUS=0 ORDER BY ADD_TIME DESC
+    </select>
+    <select id="indexList" resultType="www.gnawTravle.com.travel.entity.hotel.Hotel">
+        SELECT * FROM t_hotel WHERE DELETE_STATUS=0 AND STATE=1 ORDER BY ADD_TIME DESC
+    </select>
+    <select id="findListByQuery" resultType="www.gnawTravle.com.travel.entity.hotel.Hotel">
+        SELECT * FROM t_hotel WHERE DELETE_STATUS=0 AND HOTEL_NAME
+        LIKE #{query,jdbcType=VARCHAR}
+         ORDER BY ADD_TIME DESC
+    </select>
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_hotel WHERE DELETE_STATUS=0 AND STATE=1
+    </select>
+    <select id="count2" resultType="java.lang.Long">
+        SELECT count(*) FROM t_hotel WHERE DELETE_STATUS=0
+    </select>
+    <select id="state0count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_hotel WHERE DELETE_STATUS=0 AND STATE=0
+    </select>
+    <select id="state1count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_hotel WHERE DELETE_STATUS=0 AND STATE=1
+    </select>
+    <select id="state2count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_hotel WHERE DELETE_STATUS=0 AND STATE=2
+    </select>
+
+</mapper>
