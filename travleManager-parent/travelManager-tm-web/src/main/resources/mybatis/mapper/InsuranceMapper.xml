@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.gnawTravle.com.travel.mapper.ISuranceMapper">
+    <insert id="save">
+        INSERT INTO t_insurance(ADD_TIME,TITLE,INSURANCE_COMPANY,
+        PRICE,TYPE,RESUME,STATE, IMG_URL)
+        VALUES(NOW(),#{title},#{insuranceCompany},
+        #{price},#{type},#{resume},#{state},#{imgUrl})
+    </insert>
+    <update id="update">
+        UPDATE t_insurance SET MODIFY_TIME=NOW(),TITLE=#{title},
+        INSURANCE_COMPANY=#{insuranceCompany},PRICE=#{price},
+        TYPE=#{type},RESUME=#{resume},STATE=#{state},IMG_URL=#{imgUrl}
+        WHERE id=#{id}
+    </update>
+    <delete id="deleteByid">
+        UPDATE t_insurance SET DELETE_STATUS=1 WHERE id=#{id}
+    </delete>
+    <select id="findById" resultType="www.gnawTravle.com.travel.entity.insurance.Insurance">
+        SELECT * FROM t_insurance WHERE ID = #{id} AND DELETE_STATUS=0
+    </select>
+    <select id="findList" resultType="www.gnawTravle.com.travel.entity.insurance.Insurance">
+        SELECT * FROM t_insurance WHERE DELETE_STATUS=0 ORDER BY ADD_TIME DESC
+    </select>
+    <select id="indexList" resultType="www.gnawTravle.com.travel.entity.insurance.Insurance">
+        SELECT * FROM t_insurance WHERE DELETE_STATUS=0 AND STATE=1 ORDER BY ADD_TIME DESC
+    </select>
+    <select id="findListByQuery" resultType="www.gnawTravle.com.travel.entity.insurance.Insurance">
+        SELECT * FROM t_insurance WHERE DELETE_STATUS=0 AND TITLE LIKE #{query,jdbcType=VARCHAR}
+        ORDER BY ADD_TIME DESC
+    </select>
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_insurance WHERE DELETE_STATUS=0
+    </select>
+    <select id="state0count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_insurance WHERE DELETE_STATUS=0 AND STATE=0
+    </select>
+    <select id="state1count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_insurance WHERE DELETE_STATUS=0 AND STATE=1
+    </select>
+    <select id="state2count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_insurance WHERE DELETE_STATUS=0 AND STATE=2
+    </select>
+    <select id="company0count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_insurance WHERE DELETE_STATUS=0 AND INSURANCE_COMPANY=0
+    </select>
+    <select id="company1count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_insurance WHERE DELETE_STATUS=0 AND INSURANCE_COMPANY=1
+    </select>
+</mapper>

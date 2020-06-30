@@ -40,7 +40,7 @@ public class LoginController {
             }else {
                 if (admin.getState()==1){
                     session.setAttribute("admin", admin);
-                    return "redirect:manager/login";
+                    return "redirect:/manager/index";
                 }else {
                     model.addAttribute("msg", ConstantTool.ACCOUNT_DISABLE);
                     return "login";
@@ -62,7 +62,7 @@ public class LoginController {
     public  String adminLogin(HttpServletRequest request){
         Object admin = request.getSession().getAttribute("admin");
         if (admin!=null){
-            return "index";
+            return "redirect:/manager/index";
         }else {
             return "login";
         }

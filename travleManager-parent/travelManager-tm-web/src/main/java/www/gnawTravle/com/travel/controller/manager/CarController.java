@@ -29,10 +29,10 @@ public class CarController {
     private ICarService carService;
 
     @RequestMapping("/carList")
-    public ModelAndView travelRouteList(PageParam pageParam, @RequestParam(value = "query", required = false) String query){
+    public ModelAndView travelRouteList(PageParam pageParam, @RequestParam(value = "query", required = false) String query) {
         ModelAndView mv = new ModelAndView();
-        if(pageParam.getPageNumber()<1){
-            pageParam =new PageParam();
+        if (pageParam.getPageNumber() < 1) {
+            pageParam = new PageParam();
             long count = 0;
             try {
                 count = carService.count();
@@ -40,16 +40,16 @@ public class CarController {
                 e.printStackTrace();
             }
             pageParam.setCount(count);
-            if(count<=10){
+            if (count <= 10) {
                 pageParam.setSize(1);
-            }else{
-                pageParam.setSize(count%10==0?count/10:count/10+1);
+            } else {
+                pageParam.setSize(count % 10 == 0 ? count / 10 : count / 10 + 1);
             }
             pageParam.setPageNumber(1);
             pageParam.setPageSize(10);
         }
-        try{
-            List<Car> list = carService.findByPage(pageParam.getPageNumber(),pageParam.getPageSize(), query);
+        try {
+            List<Car> list = carService.findByPage(pageParam.getPageNumber(), pageParam.getPageSize(), query);
 
             mv.addObject("pageData", list);
 
@@ -62,29 +62,29 @@ public class CarController {
                     pageParam.setSize(1);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             mv.setViewName("404");
             return mv;
         }
-        mv.addObject("pageParam",pageParam);
+        mv.addObject("pageParam", pageParam);
         mv.setViewName("car/carList");
         return mv;
     }
 
     @RequestMapping("/carAdd")
-    public ModelAndView travelRouteAdd(){
+    public ModelAndView travelRouteAdd() {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("entity",new Car());
+        mv.addObject("entity", new Car());
         mv.setViewName("car/carEdit");
         return mv;
     }
 
     @RequestMapping("/carView")
-    public ModelAndView travelRouteView(Integer id){
+    public ModelAndView travelRouteView(Integer id) {
         ModelAndView mv = new ModelAndView();
         try {
-            mv.addObject("entity",carService.findById(id));
-        }catch (Exception e){
+            mv.addObject("entity", carService.findById(id));
+        } catch (Exception e) {
             e.printStackTrace();
         }
         mv.setViewName("car/carView");
@@ -92,11 +92,11 @@ public class CarController {
     }
 
     @RequestMapping("/carEdit")
-    public ModelAndView travelRouteEdit(Integer id){
+    public ModelAndView travelRouteEdit(Integer id) {
         ModelAndView mv = new ModelAndView();
         try {
-            mv.addObject("entity",carService.findById(id));
-        }catch (Exception e){
+            mv.addObject("entity", carService.findById(id));
+        } catch (Exception e) {
             e.printStackTrace();
         }
         mv.setViewName("car/carEdit");
@@ -104,19 +104,19 @@ public class CarController {
     }
 
     @RequestMapping("/carSave")
-    public String travelRouteSave(Car entity, @RequestParam("fileName") MultipartFile file){
+    public String travelRouteSave(Car entity, @RequestParam("fileName") MultipartFile file) {
 
         try {
 
-            if(file != null && !file.isEmpty()){
+            if (file != null && !file.isEmpty()) {
                 String fileName = file.getOriginalFilename();
                 int size = (int) file.getSize();
                 System.out.println(fileName + "-->" + size);
 
-                String path = "E:\\SSM_Case\\Travel\\travleManagerparent\\travleManager-parent\\travelManager-tm-web\\src\\main\\resources\\static\\car" ;
+                String path = "E:\\SSM_Case\\Travel\\travleManagerparent\\travleManager-parent\\travelManager-tm-web\\src\\main\\resources\\static\\car";
                 File dest = new File(path + "/" + fileName);
                 //判断文件父目录是否存在
-                if(!dest.getParentFile().exists()){
+                if (!dest.getParentFile().exists()) {
                     dest.getParentFile().mkdir();
                 }
                 try {
@@ -127,10 +127,16 @@ public class CarController {
                     e.printStackTrace();
                 }
             }
-            if (Tools.isEmpty(entity.getId())){
+            if (Tools.isEmpty(entity.getId())) {
                 carService.save(entity);
-            }else{
-                carService.update(entity);
+            } else {
+                if (entity.getImgUrl() == null) {
+                    Car car = carService.findById(entity.getId());
+                    entity.setImgUrl(car.getImgUrl());
+                    carService.update(entity);
+                } else {
+                    carService.update(entity);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -139,11 +145,11 @@ public class CarController {
     }
 
     @RequestMapping("/carDelete")
-    public String travelRouteDelete(Integer id){
-        if(!Tools.isEmpty(id)){
+    public String travelRouteDelete(Integer id) {
+        if (!Tools.isEmpty(id)) {
             try {
                 carService.deleteByid(id);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

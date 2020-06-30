@@ -31,15 +31,16 @@ public class HotelController {
 
     /**
      * 展示所有的酒店
+     *
      * @param pageParam
      * @param query
      * @return
      */
     @RequestMapping("/hotelList")
-    public ModelAndView hotelList(PageParam pageParam, @RequestParam(value = "query", required = false) String query){
+    public ModelAndView hotelList(PageParam pageParam, @RequestParam(value = "query", required = false) String query) {
         ModelAndView mv = new ModelAndView();
-        if(pageParam.getPageNumber()<1){
-            pageParam =new PageParam();
+        if (pageParam.getPageNumber() < 1) {
+            pageParam = new PageParam();
             long count = 0;
             try {
                 count = hotelService.count2();
@@ -47,16 +48,16 @@ public class HotelController {
                 e.printStackTrace();
             }
             pageParam.setCount(count);
-            if(count<=10){
+            if (count <= 10) {
                 pageParam.setSize(1);
-            }else{
-                pageParam.setSize(count%10==0?count/10:count/10+1);
+            } else {
+                pageParam.setSize(count % 10 == 0 ? count / 10 : count / 10 + 1);
             }
             pageParam.setPageNumber(1);
             pageParam.setPageSize(10);
         }
         try {
-            List<Hotel> list = hotelService.findByPage(pageParam.getPageNumber(),pageParam.getPageSize(), query);
+            List<Hotel> list = hotelService.findByPage(pageParam.getPageNumber(), pageParam.getPageSize(), query);
             mv.addObject("pageData", list);
             if (!Tools.isEmpty(query)) {
                 mv.addObject("query", query);
@@ -67,38 +68,40 @@ public class HotelController {
                     pageParam.setSize(1);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             mv.setViewName("404");
-            return  mv;
+            return mv;
         }
-        mv.addObject("pageParam",pageParam);
+        mv.addObject("pageParam", pageParam);
         mv.setViewName("hotel/hotelList");
         return mv;
     }
 
     /**
      * 跳转到编辑页面
+     *
      * @return
      */
     @RequestMapping("/hotelAdd")
-    public ModelAndView hotelAdd(){
+    public ModelAndView hotelAdd() {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("entity",new Hotel());
+        mv.addObject("entity", new Hotel());
         mv.setViewName("hotel/hotelEdit");
         return mv;
     }
 
     /**
      * 展示当前酒店信息
+     *
      * @param id
      * @return
      */
     @RequestMapping("/hotelView")
-    public ModelAndView hotelView(Integer id){
+    public ModelAndView hotelView(Integer id) {
         ModelAndView mv = new ModelAndView();
         try {
-            mv.addObject("entity",hotelService.findById(id));
-        }catch (Exception e){
+            mv.addObject("entity", hotelService.findById(id));
+        } catch (Exception e) {
             e.printStackTrace();
         }
         mv.setViewName("hotel/hotelView");
@@ -106,11 +109,11 @@ public class HotelController {
     }
 
     @RequestMapping("/hotelEdit")
-    public ModelAndView hotelEdit(Integer id){
+    public ModelAndView hotelEdit(Integer id) {
         ModelAndView mv = new ModelAndView();
         try {
-            mv.addObject("entity",hotelService.findById(id));
-        }catch (Exception e){
+            mv.addObject("entity", hotelService.findById(id));
+        } catch (Exception e) {
             e.printStackTrace();
         }
         mv.setViewName("hotel/hotelEdit");
@@ -119,23 +122,24 @@ public class HotelController {
 
     /**
      * 保存
+     *
      * @param entity
      * @param file
      * @return
      */
     @RequestMapping("/hotelSave")
-    public String hotelSave(Hotel entity, @RequestParam("fileName") MultipartFile file){
+    public String hotelSave(Hotel entity, @RequestParam("fileName") MultipartFile file) {
 
-      try{
-            if(file != null && !file.isEmpty()){
+        try {
+            if (file != null && !file.isEmpty()) {
                 String fileName = file.getOriginalFilename();
                 int size = (int) file.getSize();
                 System.out.println(fileName + "-->" + size);
 
-                String path = "E:\\SSM_Case\\Travel\\travleManagerparent\\travleManager-parent\\travelManager-tm-web\\src\\main\\resources\\static\\hotel" ;
+                String path = "E:\\SSM_Case\\Travel\\travleManagerparent\\travleManager-parent\\travelManager-tm-web\\src\\main\\resources\\static\\hotel";
                 File dest = new File(path + "/" + fileName);
                 //判断文件父目录是否存在
-                if(!dest.getParentFile().exists()){
+                if (!dest.getParentFile().exists()) {
                     dest.getParentFile().mkdir();
                 }
                 try {
@@ -146,11 +150,17 @@ public class HotelController {
                     e.printStackTrace();
                 }
             }
-            if (Tools.isEmpty(entity.getId())){
+            if (Tools.isEmpty(entity.getId())) {
 
                 hotelService.save(entity);
-            }else{
-                hotelService.update(entity);
+            } else {
+                if (entity.getImgUrl() == null) {
+                    Hotel hotel = hotelService.findById(entity.getId());
+                    entity.setImgUrl(hotel.getImgUrl());
+                    hotelService.update(entity);
+                } else {
+                    hotelService.update(entity);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -160,15 +170,16 @@ public class HotelController {
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */
     @RequestMapping("/hotelDelete")
-    public String hotelDelete(Integer id){
-        if(!Tools.isEmpty(id)){
+    public String hotelDelete(Integer id) {
+        if (!Tools.isEmpty(id)) {
             try {
                 hotelService.deleteByid(id);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

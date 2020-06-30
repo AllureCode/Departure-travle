@@ -166,10 +166,15 @@ public class TravelRouteController {
                 }
             }
             if (Tools.isEmpty(entity.getId())){
-
                 travelRouteService.save(entity);
             }else{
-                travelRouteService.update(entity);
+                if (entity.getImgUrl() == null){
+                    TravelRoute travelRoute = travelRouteService.findById(entity.getId());
+                    entity.setImgUrl(travelRoute.getImgUrl());
+                    travelRouteService.update(entity);
+                }else{
+                    travelRouteService.update(entity);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -13,7 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = "www.gnawTravle.com.travel.*")
 @MapperScan(basePackages = "www.gnawTravle.com.travel.mapper")
 public class SpringApplicationRun {
+
     public static void main(String[] args) {
+
         SpringApplication.run(SpringApplicationRun.class,args);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import www.gnawTravle.com.travel.entity.page.PageParam;
 import www.gnawTravle.com.travel.entity.spot.Spot;
 import www.gnawTravle.com.travel.service.ISpotService;
+import www.gnawTravle.com.travel.service.impl.SpotServiceImpl;
 import www.gnawTravle.com.travel.utils.Tools;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -156,7 +157,15 @@ public class SpotController {
             if (Tools.isEmpty(entity.getId())) {
                 spotService.save(entity);
             } else {
-                spotService.update(entity);
+                if (entity.getImgUrl()== null){
+                    //根据id查询当前数据库中图片的imgUrl 如果imgUrl为空 则将查询到的imgUrl传递给imgUrl
+                    Spot spot = spotService.findById(entity.getId());
+                    entity.setImgUrl(spot.getImgUrl());
+                    spotService.update(entity);
+                }else {
+                    spotService.update(entity);
+                }
+
             }
         } catch (Exception e) {
             e.printStackTrace();

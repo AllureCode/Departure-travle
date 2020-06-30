@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.gnawTravle.com.travel.mapper.ICarMapper">
+    <insert id="save">
+        INSERT INTO t_car(ADD_TIME,TITLE,START_PLACE,END_PLACE,START_DATE_AND_TIME,
+        NEED_TIME,GATHER_PLACE,TYPE,PRICE,IMG_URL,STATE,REMARK)
+        VALUES(NOW(),#{title},#{startPlace},
+        #{endPlace},#{startDateAndTime},#{needTime},#{gatherPlace},
+        #{type},#{price},#{imgUrl},#{state},#{remark})
+    </insert>
+    <update id="update">
+        UPDATE t_car SET MODIFY_TIME=NOW(),TITLE=#{title},
+        START_PLACE=#{startPlace},END_PLACE=#{endPlace},
+        START_DATE_AND_TIME=#{startDateAndTime},NEED_TIME=#{needTime},
+        GATHER_PLACE=#{gatherPlace},
+        TYPE=#{type},PRICE=#{price},IMG_URL=#{imgUrl},
+        STATE=#{state},REMARK=#{remark} WHERE id=#{id}
+    </update>
+    <delete id="deleteByid">
+        UPDATE t_car SET DELETE_STATUS=1 WHERE id=#{id}
+    </delete>
+
+    <select id="findById" resultType="www.gnawTravle.com.travel.entity.car.Car">
+        SELECT * FROM t_car WHERE ID = #{id} AND DELETE_STATUS=0
+    </select>
+    <select id="findList" resultType="www.gnawTravle.com.travel.entity.car.Car">
+        SELECT * FROM t_car WHERE DELETE_STATUS=0 ORDER BY ADD_TIME DESC
+    </select>
+    <select id="indexList" resultType="www.gnawTravle.com.travel.entity.car.Car">
+        SELECT * FROM t_car WHERE DELETE_STATUS=0 AND STATE=1 ORDER BY ADD_TIME DESC
+    </select>
+    <select id="findListByQuery" resultType="www.gnawTravle.com.travel.entity.car.Car">
+        SELECT * FROM t_car WHERE DELETE_STATUS=0 AND TITLE
+        LIKE #{query,jdbcType=VARCHAR} ORDER BY ADD_TIME DESC
+    </select>
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_car WHERE DELETE_STATUS=0
+    </select>
+    <select id="state0count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_car WHERE DELETE_STATUS=0 AND STATE=0
+    </select>
+    <select id="state1count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_car WHERE DELETE_STATUS=0 AND STATE=1
+    </select>
+    <select id="state2count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_car WHERE DELETE_STATUS=0 AND STATE=2
+    </select>
+    <select id="type0count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_car WHERE DELETE_STATUS=0 AND TYPE=0
+    </select>
+    <select id="type1count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_car WHERE DELETE_STATUS=0 AND TYPE=1
+    </select>
+    <select id="type2count" resultType="java.lang.Long">
+        SELECT count(*) FROM t_car WHERE DELETE_STATUS=0 AND TYPE=2
+    </select>
+
+</mapper>

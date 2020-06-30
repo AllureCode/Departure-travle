@@ -55,7 +55,11 @@ layui.config({
     })
 
     $(".toPageLast").click(function(){
+
         $("#pageNumber").val(parseInt($("#size").val()));
+
+        console.log( (parseInt($("#size").val())));
+
         $("#pageForm").submit();
     })
 

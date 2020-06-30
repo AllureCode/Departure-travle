@@ -6,7 +6,7 @@ layui.config({
 		laypage = layui.laypage,
 		$ = layui.jquery;
 
-	//添加文章
+	//添加用户
 	$(".newsAdd_btn").click(function(){
 		var index = layui.layer.open({
 			title : "添加系统用户",

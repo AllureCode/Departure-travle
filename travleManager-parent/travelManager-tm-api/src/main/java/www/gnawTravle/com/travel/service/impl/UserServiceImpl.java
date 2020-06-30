@@ -69,4 +69,19 @@ public class UserServiceImpl implements IUserService {
     public void deleteByid(Integer id) throws Exception {
         userMapper.deleteByid(id);
     }
+
+    @Override
+    public long state1count() {
+        return userMapper.state1count();
+    }
+
+    @Override
+    public long state2count() {
+        return userMapper.state2count();
+    }
+
+    @Override
+    public User login(String userName, String password) {
+        return userMapper.login(userName,password);
+    }
 }

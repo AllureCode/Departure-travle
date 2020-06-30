@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.gnawTravle.com.travel.mapper.IMessageMapper">
+    <insert id="save">
+        INSERT INTO  t_message(ADD_TIME,USER_ID,USER_NAME,NAME,TITLE,CONTENT,STATE)
+                VALUES(NOW(),#{userId},#{userName},#{name},#{title},#{content},#{state})
+    </insert>
+    <update id="update">
+        UPDATE  t_message SET MODIFY_TIME=NOW(),
+        USER_ID=#{userId},
+        USER_NAME=#{userName},NAME=#{name},
+        TITLE=#{title},CONTENT=#{content},STATE=#{state}
+        WHERE id=#{id}
+    </update>
+    <delete id="deleteByid">
+        UPDATE  t_message SET DELETE_STATUS=1 WHERE id=#{id}
+    </delete>
+    <select id="findById" resultType="www.gnawTravle.com.travel.entity.message.Message">
+        SELECT * FROM  t_message WHERE ID = #{id} AND DELETE_STATUS=0
+    </select>
+    <select id="findList" resultType="www.gnawTravle.com.travel.entity.message.Message">
+        SELECT * FROM  t_message WHERE DELETE_STATUS=0 ORDER BY ADD_TIME DESC
+    </select>
+    <select id="findListByUserId" resultType="www.gnawTravle.com.travel.entity.message.Message">
+        SELECT * FROM  t_message WHERE USER_ID=#{userId} AND DELETE_STATUS=0 ORDER BY ADD_TIME DESC
+    </select>
+    <select id="findListByQuery" resultType="www.gnawTravle.com.travel.entity.message.Message">
+        SELECT * FROM  t_message WHERE DELETE_STATUS=0 AND USER_NAME
+        LIKE #{query,jdbcType=VARCHAR} ORDER BY ADD_TIME DESC
+    </select>
+    <select id="count" resultType="java.lang.Long">
+        SELECT count(*) FROM  t_message WHERE DELETE_STATUS=0
+    </select>
+    <select id="countByUserId" resultType="java.lang.Long">
+        SELECT count(*) FROM  t_message WHERE USER_ID = #{userId} AND DELETE_STATUS=0
+    </select>
+</mapper>

@@ -39,6 +39,8 @@ public class ManagerController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("porvice",userService.countPorvice());
         mv.setViewName("main");
+
+        System.out.println("****************************"+userService.countPorvice());
         return mv;
     }
 

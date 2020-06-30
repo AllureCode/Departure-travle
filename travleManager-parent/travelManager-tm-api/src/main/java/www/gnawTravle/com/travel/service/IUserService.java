@@ -65,4 +65,10 @@ public interface IUserService {
      */
     void deleteByid(Integer id)throws Exception;
 
+    long state1count();
+
+    long state2count();
+
+
+    User login(String userName, String password)throws Exception;
 }

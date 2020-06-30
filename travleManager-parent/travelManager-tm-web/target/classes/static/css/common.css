@@ -1,5 +1,5 @@
 html{overflow-x:hidden;background:#eeeeee;}
-.top_hw{background:url(../images/top_h.jpg) repeat-x; height:28px;line-height:28px;width:100%:}
+.top_hw{background:url(../images/top_h.jpg) repeat-x; height:28px;line-height:28px;width:100%;}
 .top_h{width:980px;margin:0 auto;}
 .top_h .top_hl{float:left;}
 .top_h .top_hl span{color:#666;}
@@ -211,7 +211,7 @@ html > body .num .act {background: url(../images/bg_alpha2.png);}
 .qr_info .qr_left p{height:30px;line-height:30px;}
 .qr_info .qr_right{float:left;padding-top:20px;}
 .qr_info .qr_right b{color:#f44400;font-size:16px;}
-.2id{text-indent:2em;}
+.id{text-indent:2em;}
 .qr_wrap{background:#fff;border:1px solid #ddd;padding:20px;}
 .qr_wrap table caption{font-weight:bold;font-size:14px;height:40px;line-height:40px;}
 .qr_wrap table tr td{height:35px;line-height:35px;}
@@ -574,7 +574,7 @@ html > body .num .act {background: url(../images/bg_alpha2.png);}
 .ftgx1_r4{ width:411px; padding:10px;}
 .ftgp1{ line-height:24px; border-bottom:1px dashed #666; font-size:14px; padding-bottom:10px;}
 .ftgp2{ line-height:24px; font-size:14px; padding-top:10px;}
-.ftg4{ width:978px; margin-top:10px; border:1px solid #dd; background:#fff;}
+.ftg4{ width:978px; margin-top:10px; border:1px solid #dddddd; background:#fff;}
 .ftg4_top{ width:978px; background:#4f9c00; height:36px; padding-top:4px;}
 .ftg4_top ul{ list-style-type:none}
 .ftg4_top ul li{ width:88px; height:32px; padding-top:8px; text-align:center; font-family:微软雅黑; font-size:14px; color:#fff; float:left; margin-left:10px;}

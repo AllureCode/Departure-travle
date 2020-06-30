@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Setter
 @ToString
 public class Province implements Serializable {
-    private Long province;
+    private Long provice;
 
     private String count;
 }

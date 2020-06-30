@@ -70,4 +70,10 @@ public interface IUserMapper {
      * @throws Exception
      */
     void deleteByid(Integer id);
+
+     long state1count();
+
+     long state2count();
+
+    User login(@Param("userName") String userName, @Param("password") String password);
 }

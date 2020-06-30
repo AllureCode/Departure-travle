@@ -20,14 +20,15 @@
     </update>
 
     <delete id="deleteByid">
-        delete from t_user where id=#{id}
+       UPDATE t_user SET DELETE_STATUS=1 WHERE id=#{id}
     </delete>
 
     <select id="countPorvice" resultType="www.gnawTravle.com.travel.entity.user.Province">
         SELECT p.`id` PROVICE,COUNT(u.`PROVINCE`)
          COUNT FROM t_province p
          LEFT JOIN t_user u ON u.`PROVINCE` = p.`id`
-          GROUP BY p.id ;
+          GROUP BY p.id
+          ORDER BY PROVICE asc ;
     </select>
 
     <select id="count" resultType="java.lang.Long">
@@ -51,6 +52,15 @@
 
     <select id="findByUserName" resultType="www.gnawTravle.com.travel.entity.user.User">
     SELECT * FROM t_user WHERE USER_NAME = #{userName} AND DELETE_STATUS=0
+    </select>
+    <select id="state1count" resultType="java.lang.Long">
+    SELECT count(*) FROM t_user WHERE STATE=1 AND DELETE_STATUS=0
+    </select>
+    <select id="state2count" resultType="java.lang.Long">
+    SELECT count(*) FROM t_user WHERE STATE=2  AND DELETE_STATUS=0
+    </select>
+    <select id="login" resultType="www.gnawTravle.com.travel.entity.user.User">
+        SELECT * FROM t_user WHERE USER_NAME = #{userName} AND PASSWORD = #{password} AND DELETE_STATUS=0
     </select>
 
 </mapper>
